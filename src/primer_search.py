@@ -46,7 +46,9 @@ class Primer_Search():
     def __init__(self, primer_length:int, data:Path):
         self.length = primer_length
         self.file_path = data
+        self.count_primers = 0
         self.seq = self._read_clean(data=data)
+
 
     def _read_clean(self, data:Path):
         with open(filepath, 'r') as file:
@@ -73,18 +75,23 @@ class Primer_Search():
         else:
             return False
 
-    def __call__(self, fp_write:Path):
+    def _create_primers(self):
         primers_=[]
+        for i in range(0, len(self.seq)-self.length):
+            primer = self.seq[i:i+self.length]
+            if self._start_strong(primer) and self._check_GC(primer) >= 0.4:
+                self.count_primers += 1
+                primer_info={primer:[{'GC_content':self._check_GC(primer), 'pos_in_seq':i}]}
+                primers_.append(primer_info)
+
+        return primers_
+
+    def __call__(self, fp_write:Path):
+        primers= self._create_primers()
         with open(fp_write, 'w') as file:
-            count_primers = 0
-            for i in range(0, len(self.seq)-self.length):
-                primer = self.seq[i:i+self.length]
-                if self._start_strong(primer) and self._check_GC(primer) >= 0.4:
-                    count_primers += 1
-                    primer_info={primer:[{'GC_content':self._check_GC(primer), 'pos_in_seq':i}]}
-                    primers_.append(primer_info)
-                    file.write(json.dumps(primer_info))
-                    file.write('\n')
+            for primer_info in primers:
+                file.write(json.dumps(primer_info))
+                file.write('\n')
 
 if __name__ == "__main__":
     filepath = 'data/pEM40_seq.txt'
