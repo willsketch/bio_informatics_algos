@@ -17,9 +17,11 @@ The precision curve
 
 ![Precision curve](colony_counter_P_curve.png)  
 
+Results  
+This is an example with 98 predicted colonies  
+
+![](pred_image.jpg)  
+
 TODO
 * Fine tune the model by trying different optmizers like Adam and other configurations  
 * get more data to help generalize better  
-Results  
-This is an example with 98 predicted colonies  
-![](pred_image.jpg)
