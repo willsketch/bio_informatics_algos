@@ -7,11 +7,10 @@ from ultralytics import YOLO
 from torchvision.io import read_image
 from torchvision.utils import draw_bounding_boxes
 
+model_path = 'runs/detect/train/weights/best.pt'
 def Predict(image:Path):
     image = cv2.imread(image) #numpy.ndarray
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model_path = 'runs/detect/train/weights/best.pt'
-
     model = YOLO(model_path)
     results = model.predict(source=image, device=device, save_txt=False)
     return results
