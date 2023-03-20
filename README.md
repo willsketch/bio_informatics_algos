@@ -1,6 +1,6 @@
 Contains algos that can be used in bioinformatics  
 Forexample:  
-**primer_search in src/**
+**primer_search**
 * If you want to determine the presence of a plasmide in bacteria via PCR. This
 file creates a txt file of primers(showing sequence gc_content and position of
 the primer sequence in the plasmide sequence) of the plasmide sequence of a
