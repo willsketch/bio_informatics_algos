@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-#TODO implement feature to sort primers based on gc content
 
 class Primer_Search():
     """
