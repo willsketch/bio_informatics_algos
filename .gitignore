@@ -1,2 +1,6 @@
 colony_counter/runs
+colony_counter/runs_2
+colony_counter/weights/best_1.pt
+colony_counter/weights/best_2.onnx
+colony_counter/weights/best_2.pt
 colony_counter/src/__pycache__
