@@ -7,7 +7,7 @@ from ultralytics import YOLO
 from torchvision.io import read_image
 from torchvision.utils import draw_bounding_boxes
 
-model_path_gpu = 'weights/best_1.pt'
+model_path_gpu = 'weights/best_2.pt'
 model_path_cpu = 'weights/best_2.pt'
 
 def Predict(image:Path):
